@@ -1,11 +1,9 @@
 using System.Diagnostics;
 using CS246_Lab9.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CS246_Lab9.Controllers
 {
-    [Authorize]
     public class HomeController : Controller
     {
         public IActionResult Index()
@@ -18,7 +16,6 @@ namespace CS246_Lab9.Controllers
             return View();
         }
 
-        [AllowAnonymous]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
