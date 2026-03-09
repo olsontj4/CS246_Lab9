@@ -6,8 +6,8 @@
         public required string ProductName { get; set; }
         public string? Description { get; set; }
         public required string Category { get; set; }
-        public string[]? Tags { get; set; }
-        public required string[] ImageURLs { get; set; }
+        public List<Tag>? Tags { get; set; }
+        public required List<ImageURL> ImageURLs { get; set; }
         public required int Quantity { get; set; }
     }
 }

@@ -7,7 +7,7 @@
         public string? Email { get; set; }
         public string? Phone { get; set; }
         public required string ShippingAddress { get; set; }
-        public required List<Product> Products { get; set; } = [];
+        public required List<Product> Products { get; set; } = new List<Product>();
         public string? SpecialInstructions { get; set; }
     }
 }
