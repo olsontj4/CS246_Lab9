@@ -4,7 +4,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-CS246_Lab9-f901d4ba-f728-4766-8447-4910e26e1307</UserSecretsId>
+    <UserSecretsId>aspnet-CS246_Lab9-0e3472e6-01d2-4e65-bdbe-6d306217b5df</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
