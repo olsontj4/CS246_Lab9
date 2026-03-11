@@ -4,10 +4,16 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("MySqlConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+
+var user = builder.Configuration["ProdDbUser"] ?? builder.Configuration["DbUser"];
+var pass = builder.Configuration["ProdDbPassword"] ?? builder.Configuration["DbPassword"];
+
+//Build the complete MySQL connection string
+var finalConn = $"{connectionString};userid={user};password={pass};";
+// Add services to the container.
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseMySQL(connectionString));
+    options.UseMySQL(finalConn));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
