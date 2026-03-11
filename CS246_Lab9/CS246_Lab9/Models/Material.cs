@@ -3,7 +3,7 @@
     public class Material
     {
         public int Id { get; set; }
-        public string MaterialType { get; set; }
+        public required string MaterialType { get; set; }
         //TODO: Add unit of measurement.
     }
 }

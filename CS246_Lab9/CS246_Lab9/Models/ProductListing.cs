@@ -5,11 +5,10 @@
         public int Id { get; set; }
         public required string ProductName { get; set; }
         public string? Details { get; set; }
-        public string? Category { get; set; }
-        public List<string> Tags { get; set; } = new List<string>();
-        public List<string> ImageURLs { get; set; } = new List<string>();
-        public List<string> Materials { get; set; } = new List<string>();
-        public int Quantity { get; set; }
-        public bool IsVisible => Quantity > 0;
+        public required string Category { get; set; }
+        public List<Tag> Tags { get; set; } = new();
+        public List<ImageURL> ImageURLs { get; set; } = new();
+        public List<Material> Materials { get; set; } = new();
+        public bool IsVisible { get; set; } = false;
     }
 }
