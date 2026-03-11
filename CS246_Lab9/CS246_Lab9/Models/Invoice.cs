@@ -7,7 +7,11 @@
         public string? Email { get; set; }
         public string? Phone { get; set; }
         public required string ShippingAddress { get; set; }
-        public required List<Product> Products { get; set; } = new List<Product>();
+        public required DateTime OrderDate { get; set; }
+        public required decimal TotalSpent { get; set; }
+        public required List<InvoiceLineItem> LineItems { get; set; }
         public string? SpecialInstructions { get; set; }
+        public string? Status { get; set; }
+        public string? PaymentMethod { get; set; }
     }
 }

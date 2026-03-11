@@ -5,6 +5,6 @@
         public int Id { get; set; }
         public required AppUser User { get; set; }
         public required string Feedback { get; set; }
-        public bool IsApproved { get; set; }
+        public required bool IsApproved { get; set; } = false;
     }
 }
