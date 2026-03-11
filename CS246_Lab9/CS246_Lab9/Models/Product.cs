@@ -5,8 +5,7 @@
         public int Id { get; set; }
         public required string ProductName { get; set; }
         public string? Description { get; set; }
-        public List<Tag>? Tags { get; set; }
-        public List<ImageURL>? ImageURLs { get; set; }
-        public required int Quantity { get; set; }
+        public int Quantity { get; set; } = 0;
+        public decimal CurrentPrice { get; set; } = 0m;//Product can be created and price added later.
     }
 }
