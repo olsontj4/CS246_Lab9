@@ -4,5 +4,6 @@
     {
         public int Id { get; set; }
         public required string URL { get; set; }
+        public int DisplayOrder { get; set; }
     }
 }
