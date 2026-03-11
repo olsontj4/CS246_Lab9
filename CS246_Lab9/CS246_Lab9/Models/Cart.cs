@@ -1,8 +1,8 @@
 ﻿namespace CS246_Lab9.Models
 {
-    public class Tag
+    public class Cart
     {
         public int Id { get; set; }
-        public required string TagName { get; set; }
+        public List<Product>? Products { get; set; }
     }
 }
