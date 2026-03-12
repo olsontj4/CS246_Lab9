@@ -10,22 +10,22 @@ using CS246_Lab9.Models;
 
 namespace CS246_Lab9.Controllers
 {
-    public class InvoicesController : Controller
+    public class TestimonialsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public InvoicesController(ApplicationDbContext context)
+        public TestimonialsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Invoices
+        // GET: Testimonials
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Invoices.ToListAsync());
+            return View(await _context.Testimonials.ToListAsync());
         }
 
-        // GET: Invoices/Details/5
+        // GET: Testimonials/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace CS246_Lab9.Controllers
                 return NotFound();
             }
 
-            var invoice = await _context.Invoices
+            var testimonial = await _context.Testimonials
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (invoice == null)
+            if (testimonial == null)
             {
                 return NotFound();
             }
 
-            return View(invoice);
+            return View(testimonial);
         }
 
-        // GET: Invoices/Create
+        // GET: Testimonials/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Invoices/Create
+        // POST: Testimonials/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CustomerName,Email,Phone,ShippingAddress,OrderDate,TotalSpent,SpecialInstructions,Status,PaymentMethod")] Invoice invoice)
+        public async Task<IActionResult> Create([Bind("Id,Feedback,IsApproved")] Testimonial testimonial)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(invoice);
+                _context.Add(testimonial);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(invoice);
+            return View(testimonial);
         }
 
-        // GET: Invoices/Edit/5
+        // GET: Testimonials/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace CS246_Lab9.Controllers
                 return NotFound();
             }
 
-            var invoice = await _context.Invoices.FindAsync(id);
-            if (invoice == null)
+            var testimonial = await _context.Testimonials.FindAsync(id);
+            if (testimonial == null)
             {
                 return NotFound();
             }
-            return View(invoice);
+            return View(testimonial);
         }
 
-        // POST: Invoices/Edit/5
+        // POST: Testimonials/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,CustomerName,Email,Phone,ShippingAddress,OrderDate,TotalSpent,SpecialInstructions,Status,PaymentMethod")] Invoice invoice)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Feedback,IsApproved")] Testimonial testimonial)
         {
-            if (id != invoice.Id)
+            if (id != testimonial.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace CS246_Lab9.Controllers
             {
                 try
                 {
-                    _context.Update(invoice);
+                    _context.Update(testimonial);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!InvoiceExists(invoice.Id))
+                    if (!TestimonialExists(testimonial.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace CS246_Lab9.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(invoice);
+            return View(testimonial);
         }
 
-        // GET: Invoices/Delete/5
+        // GET: Testimonials/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,34 +124,34 @@ namespace CS246_Lab9.Controllers
                 return NotFound();
             }
 
-            var invoice = await _context.Invoices
+            var testimonial = await _context.Testimonials
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (invoice == null)
+            if (testimonial == null)
             {
                 return NotFound();
             }
 
-            return View(invoice);
+            return View(testimonial);
         }
 
-        // POST: Invoices/Delete/5
+        // POST: Testimonials/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var invoice = await _context.Invoices.FindAsync(id);
-            if (invoice != null)
+            var testimonial = await _context.Testimonials.FindAsync(id);
+            if (testimonial != null)
             {
-                _context.Invoices.Remove(invoice);
+                _context.Testimonials.Remove(testimonial);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool InvoiceExists(int id)
+        private bool TestimonialExists(int id)
         {
-            return _context.Invoices.Any(e => e.Id == id);
+            return _context.Testimonials.Any(e => e.Id == id);
         }
     }
 }

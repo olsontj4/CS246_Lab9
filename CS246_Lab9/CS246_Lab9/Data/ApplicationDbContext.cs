@@ -8,7 +8,9 @@ namespace CS246_Lab9.Data
     {
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<ProductListing> ProductListings { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<Event> Events { get; set; }
+        public DbSet<Testimonial> Testimonials { get; set; }
     }
 }
